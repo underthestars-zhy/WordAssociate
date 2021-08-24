@@ -1,5 +1,8 @@
 import SwiftUI
 
+@available(iOS 13.0.0, *)
+@available(watchOS 6.0.0, *)
+@available(tvOS 12.0.0, *)
 @available(macOS 10.15, *)
 public class WordAssociate: ObservableObject {
     public static let shared = WordAssociate()
