@@ -2,10 +2,10 @@ import SwiftUI
 
 @available(macOS 10.15, *)
 public class WordAssociate: ObservableObject {
-    static let shared = WordAssociate()
+    public static let shared = WordAssociate()
     static let poolLock = NSLock()
     static var pool = [String : WordAssociate]()
-    static func getWordAssociate(with name: String) -> WordAssociate {
+    public static func getWordAssociate(with name: String) -> WordAssociate {
         if let wa = pool[name] { return wa } else {
             let wa = WordAssociate()
             poolLock.lock()
@@ -23,9 +23,9 @@ public class WordAssociate: ObservableObject {
     @available(iOS 15.0.0, *)
     @available(watchOS 8.0.0, *)
     @available(tvOS 15.0.0, *)
-    func add(_ word: String) async { Task(priority: .background) { add(word) } }
+    public func add(_ word: String) async { Task(priority: .background) { add(word) } }
     
-    func add(_ word: String) {
+    public func add(_ word: String) {
         var tempTable = letterTable
         
         for (index, char) in word.enumerated() {
@@ -37,7 +37,7 @@ public class WordAssociate: ObservableObject {
         // print(letterTable.hashTable["t"]?.hashTable["e"]?.hashTable["s"]?.hashTable)
     }
     
-    func `get`(_ word: String) {
+    public func `get`(_ word: String) {
         var tempLetterTable = letterTable
         
         res = []
