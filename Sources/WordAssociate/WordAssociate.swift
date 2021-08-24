@@ -4,7 +4,7 @@ import SwiftUI
 public class WordAssociate: ObservableObject {
     static let shared = WordAssociate()
     static let poolLock = NSLock()
-    private static var pool = [String : WordAssociate]()
+    static var pool = [String : WordAssociate]()
     static func getWordAssociate(with name: String) -> WordAssociate {
         if let wa = pool[name] { return wa } else {
             let wa = WordAssociate()
@@ -17,7 +17,7 @@ public class WordAssociate: ObservableObject {
     
     @Published var res = [String]()
     
-    private let letterTable = LetterTable()
+    let letterTable = LetterTable()
     
     @available(macOS 12.0.0, *)
     @available(iOS 15.0.0, *)
