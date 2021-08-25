@@ -77,6 +77,28 @@ public class WordAssociate: ObservableObject {
         deepFind(word)
     }
     
+    public func has(_ word: String) -> Bool {
+        var tempLetterTable = letterTable
+        
+        for (index, char) in word.enumerated() {
+            let subString = String(char).lowercased()
+            
+            if index == word.count - 1 {
+                if tempLetterTable.wordTable.contains(subString) {
+                    return true
+                }
+            }
+            
+            if let table = tempLetterTable.hashTable[subString] {
+                tempLetterTable = table
+            } else {
+                return false
+            }
+        }
+        
+        return false
+    }
+    
     init() {}
 }
 

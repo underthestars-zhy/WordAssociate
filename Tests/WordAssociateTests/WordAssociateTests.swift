@@ -8,6 +8,15 @@ final class WordAssociateTests: XCTestCase {
         WordAssociate.shared.add("Teb")
     }
     
+    func testHas() {
+        WordAssociate.shared.add("Test")
+        WordAssociate.shared.add("Tesa")
+        WordAssociate.shared.add("Teb")
+        
+        XCTAssertEqual(WordAssociate.shared.has("Tesa"), true)
+        XCTAssertEqual(WordAssociate.shared.has("Tes"), false)
+    }
+    
     @available(macOS 12.0.0, *)
     func testAddWithAsync() async {
         await withTaskGroup(of: Void.self, body: { group in
