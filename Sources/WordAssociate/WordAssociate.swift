@@ -18,7 +18,7 @@ public class WordAssociate: ObservableObject {
         }
     }
     
-    @Published var res = [String]()
+    @Published public var res = [String]()
     
     let letterTable = LetterTable()
     
